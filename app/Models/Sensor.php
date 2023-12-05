@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class sensor extends Model
+class Sensor extends Model
 {
     use HasFactory;
+
     protected $table = 'sensores';
     protected $fillable = ['tipo_sensor', 'nombre_sensor', 'fecha_registro'];
 }
