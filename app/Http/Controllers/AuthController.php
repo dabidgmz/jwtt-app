@@ -1,0 +1,158 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use App\Models\User; // Asegúrate de ajustar el namespace según la ubicación real de tu modelo User
+use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
+use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
+
+class AuthController extends Controller
+{
+    /**
+     * Crea una nueva instancia de AuthController.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
+    }
+
+    /**
+     * Obtiene un JWT via las credenciales proporcionadas.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function login(Request $request)
+    {
+        $credentials = request(['email', 'password']);
+
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'No autorizado'], 401);
+        }
+
+        return $this->respondWithToken($token);
+    }
+
+    /**
+     * Registra un nuevo usuario.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function register(Request $request)
+    {
+        // Validar los datos del usuario
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:user', // Asegúrate de ajustar el nombre de la tabla según tu configuración
+            'departament' => 'required|string|max:255',
+            'phone' => 'required|string|max:255',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        // Si la validación falla, responder con los errores
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 422);
+        }
+
+        // Crear un nuevo usuario con el status establecido en true
+        $user = User::create([
+            'name' => $request->input('name'),
+            'lastname' => $request->input('lastname'),
+            'email' => $request->input('email'),
+            'departament' => $request->input('departament'),
+            'phone' => $request->input('phone'),
+            'status' => true,
+            'password' => bcrypt($request->input('password')),
+        ]);
+
+        // Realizar automáticamente el inicio de sesión del nuevo usuario
+        return $this->loginAfterRegister($request);
+    }
+
+    /**
+     * Obtiene el usuario autenticado.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function me()
+    {
+        return response()->json(auth()->user());
+    }
+
+    /**
+     * Cierra la sesión del usuario (invalida el token).
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function logout()
+    {
+        auth()->logout();
+
+        return response()->json(['message' => 'Sesión cerrada exitosamente']);
+    }
+
+    /**
+     * Actualiza un token existente.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function refresh()
+    {
+        // Obtener el token actual del usuario
+        $token = JWTAuth::getToken();
+        if (!$token) {
+            return response()->json(['error' => 'Token no proporcionado'], 401);
+        }
+
+        // Intentar realizar un refresh del token
+        try {
+            $newToken = JWTAuth::refresh($token);
+        } catch (JWTException $e) {
+            return response()->json(['error' => 'No se pudo actualizar el token'], 401);
+        }
+
+        // Responder con el nuevo token
+        return $this->respondWithToken($newToken);
+    }
+
+    /**
+     * Retorna la estructura del array del token.
+     *
+     * @param  string $token
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => JWTAuth::factory()->getTTL() * 60
+        ]);
+    }
+
+    /**
+     * Inicia la sesión del usuario después del registro.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function loginAfterRegister(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        // Intentar realizar el inicio de sesión del nuevo usuario
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'No autorizado'], 401);
+        }
+
+        // Responder con el token
+        return $this->respondWithToken($token);
+    }
+}
