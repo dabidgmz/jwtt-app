@@ -35,6 +35,7 @@ Route::group([
     
 
 });
+//rutas jwt user
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout']);
@@ -52,7 +53,7 @@ Route::post('/empresas', [EmpresaController::class, 'create']);
 Route::put('/empresas/{id}', [EmpresaController::class, 'update']);
 Route::delete('/empresas/{id}', [EmpresaController::class, 'destroy']);
 
-
+//rutas para los sesnores
 Route::get('/sensores/{id}', [SensorController::class, 'show']);
 Route::post('/sensores', [SensorController::class, 'create']);
 Route::put('/sensores/{id}', [SensorController::class, 'update']);
