@@ -42,7 +42,6 @@ Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
 
 });
-//rutas jwt user
 
 
 
