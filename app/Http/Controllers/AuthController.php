@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
-use App\Models\User; // Asegúrate de ajustar el namespace según la ubicación real de tu modelo User
+use App\Models\User; 
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
 
@@ -55,8 +55,6 @@ class AuthController extends Controller
             'phone' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
-
-        // Si la validación falla, responder con los errores
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
@@ -110,8 +108,6 @@ class AuthController extends Controller
         if (!$token) {
             return response()->json(['error' => 'Token no proporcionado'], 401);
         }
-
-        // Intentar realizar un refresh del token
         try {
             $newToken = JWTAuth::refresh($token);
         } catch (JWTException $e) {

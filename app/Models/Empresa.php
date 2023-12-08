@@ -13,4 +13,10 @@ class Empresa extends Model
     protected $fillable = [
         'nombre',
     ];
+
+    public function usuarios()
+    {
+        return $this->hasManyThrough(User::class, UsuarioEmpresa::class, 'empresa_id', 'id', 'id', 'user_id');
+    }
+
 }
