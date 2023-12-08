@@ -58,8 +58,6 @@ class AuthController extends Controller
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
-
-        // Crear un nuevo usuario con el status establecido en true
         $user = User::create([
             'name' => $request->input('name'),
             'lastname' => $request->input('lastname'),
@@ -70,7 +68,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        return response()->json(['msg'=>"Registro correcto",'data'=>$user],201);
+        return response()->json(['msg'=>"Registro correcto",'data'=>$user],);
     }
 
     /**
