@@ -70,8 +70,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->input('password')),
         ]);
 
-        // Realizar automáticamente el inicio de sesión del nuevo usuario
-        return $this->loginAfterRegister($request);
+        return response()->json(['msg'=>"Registro correcto",'data'=>$user],201);
     }
 
     /**
