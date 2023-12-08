@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 */
 
+//rutas para usuario jwt
 Route::group([
 
     'middleware' => 'api',
