@@ -10,6 +10,7 @@ use App\Http\Middleware\JwtMiddleware;
 use App\Http\Controllers\UsuarioEmpresaController;
 use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
+use App\Http\Controllers\AdafruitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,11 +45,10 @@ Route::post('me', [AuthController::class, 'me']);
 
 });
 
-
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 // Rutas para CRUD de Empresas
 Route::get('/empresas', [EmpresaController::class, 'index']);
 Route::get('/empresas/{id}', [EmpresaController::class, 'show']);
@@ -83,3 +83,12 @@ Route::get('obtener-vitrinas-por-empresa/{empresaId}', [EmpresaVitrinaController
 // detalle sensor
 Route::post('detalle-sensores', [DetalleSensorController::class, 'create']);
 Route::put('detalle-sensores/{vitrinaId}/{sensorId}', [DetalleSensorController::class, 'update']);
+
+//Sensores 
+Route::get('sensores/humedad', [AdafruitController::class, 'humedad']);
+Route::get('sensores/temperatura', [AdafruitController::class, 'temperatura']);
+Route::get('sensores/gas', [AdafruitController::class, 'gas']);
+Route::get('sensores/impacto', [AdafruitController::class, 'impacto']);
+Route::get('sensores/luz', [AdafruitController::class, 'luz']);
+Route::get('sensores/vibracion', [AdafruitController::class, 'vibracion']);
+Route::get('sensores/ultrasonico', [AdafruitController::class, 'ultrasonico']);

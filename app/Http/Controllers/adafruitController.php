@@ -1,72 +1,209 @@
 <?php
-
-/*namespace App\Http\Controllers;
-
-use App\Models\Feed;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class adafruitController extends Controller
 {
-    
-    public function createData(Request $request)
-    {
-        $validate = Validator::make(
-            $request->all(),
+    public function humedad()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/humedad/data?limit=1');
+
+    if ($response->successful()) {
+        $responseData = $response->json(); // Obtener el JSON de la respuesta
+
+        // Extraer los valores necesarios
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
+
+        return response()->json([
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
             [
-                'value' => 'required',
-                'username' => 'required',
-                'feedKey' => 'required',
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
             ],
-            [
-                "value.required" => "El campo :attribute es obligatorio",
-                "username.required" => "El campo :attribute es obligatorio",
-            ]
+            $response->status()
         );
-        if($validate->fails())
-        {
-            return response()->json([
-                "status"    => 400,
-                "message"   => "Alguno de los campos no se ha llenado",
-                "error"     => [$validate->errors()],
-                "data"      => []
-            ],400);
-        }
+    }   
+}
+public function temperatura()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/temperatura/data?limit=1');
 
-        $response = Http::withHeaders([
-            'X-AIO-Key' => $request->aio_key
-        ])->post('https://io.adafruit.com/api/v2/'.$request->username.'/feeds/'. $request->feedKey .'/data',
-        [
-            "value" => $request->value
-        ]);
-        if($response->successful())
-        {
-            return response()->json([
-                "status"    => 200,
-                "message"   => "Datos enviados correctamente",
-                "value" => $request->value
-            ],200);
-        }
-        return response()->json([
-            "status"    => 400,
-            "message"   => "Error al enviar los datos",
-            "error"     => $response
-        ],400);
-    }
+    if ($response->successful()) {
+        $responseData = $response->json();
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
 
-    public function seeData(Request $request)
-    {
-        $response = Http::withHeaders([
-            'X-AIO-Key' => $request->aio_key
-        ])->get('https://io.adafruit.com/api/v2/'.$request->username.'/feeds/'. $request->feedKey .'/data/retain');
-        if($response->successful())
-        {
-            return $response;
-        }
         return response()->json([
-            "status"    => 400,
-            "message"   => "Error al recuperar los datos",
-        ],400);
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
+            [
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
+            ],
+            $response->status()
+        );
+    }   
+}
+public function gas()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/gas/data?limit=1');
+
+    if ($response->successful()) {
+        $responseData = $response->json();
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
+
+        return response()->json([
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
+            [
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
+            ],
+            $response->status()
+        );
+    }   
+}
+public function ultrasonico()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/ultrasonico/data?limit=1');
+
+    if ($response->successful()) {
+        $responseData = $response->json();
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
+
+        return response()->json([
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
+            [
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
+            ],
+            $response->status()
+        );
+    }   
+}
+public function impacto()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/impacto/data?limit=1');
+
+    if ($response->successful()) {
+        $responseData = $response->json();
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
+
+        return response()->json([
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
+            [
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
+            ],
+            $response->status()
+        );
+    }   
+}
+public function luz()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/luz/data?limit=1');
+
+    if ($response->successful()) {
+        $responseData = $response->json();
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
+
+        return response()->json([
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
+            [
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
+            ],
+            $response->status()
+        );
+    }   
+}
+
+public function vibracion()
+{
+    $response = Http::withHeaders([
+        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+    ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/vibracion/data?limit=1');
+
+    if ($response->successful()) {
+        $responseData = $response->json();
+        $dataToShow = [
+            'value' => $responseData[0]['value'],
+            'feed_id' => $responseData[0]['feed_id'],
+            'feed_key' => $responseData[0]['feed_key'],
+        ];
+
+        return response()->json([
+            "message" => 'Datos obtenidos correctamente',
+            "data" => $dataToShow
+        ], 200);
+    } else {
+        return response()->json(
+            [
+                'message' => 'Error al obtener los datos',
+                'data' => $response->body()
+            ],
+            $response->status()
+        );
+    }   
+}
+
+
     }
-}*/
