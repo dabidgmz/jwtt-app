@@ -10,6 +10,7 @@ use App\Http\Middleware\JwtMiddleware;
 use App\Http\Controllers\UsuarioEmpresaController;
 use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
+
 use App\Http\Controllers\adafruitController;
 use App\Http\Controllers\VerificationController;
 /*
