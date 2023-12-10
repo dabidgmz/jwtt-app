@@ -7,8 +7,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User; 
+use Illuminate\Auth\Events\Registered;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -55,9 +57,11 @@ class AuthController extends Controller
             'phone' => 'required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
+    
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()], 422);
         }
+    
         $user = User::create([
             'name' => $request->input('name'),
             'lastname' => $request->input('lastname'),
@@ -67,8 +71,9 @@ class AuthController extends Controller
             'status' => true,
             'password' => bcrypt($request->input('password')),
         ]);
-
-        return response()->json(['msg'=>"Registro correcto",'data'=>$user],);
+        Mail::to($user->email)->send(new \App\Mail\VerifyEmail($user));
+    
+        return response()->json(['msg' => "Registro correcto", 'data' => $user]);
     }
 
     /**

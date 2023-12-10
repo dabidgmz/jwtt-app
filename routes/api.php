@@ -11,7 +11,7 @@ use App\Http\Controllers\UsuarioEmpresaController;
 use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
 use App\Http\Controllers\AdafruitController;
-
+use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -92,3 +92,7 @@ Route::get('sensores/impacto', [AdafruitController::class, 'impacto']);
 Route::get('sensores/luz', [AdafruitController::class, 'luz']);
 Route::get('sensores/vibracion', [AdafruitController::class, 'vibracion']);
 Route::get('sensores/ultrasonico', [AdafruitController::class, 'ultrasonico']);
+
+
+
+Route::get('/verify/{id}', [VerificationController::class, 'verify']);
