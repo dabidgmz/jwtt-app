@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User; 
+use \App\Mail\VerifyEmail;
 use Illuminate\Auth\Events\Registered;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 use PHPOpenSourceSaver\JWTAuth\Exceptions\JWTException;
@@ -98,7 +99,7 @@ class AuthController extends Controller
             'status' => true,
             'password' => bcrypt($request->input('password')),
         ]);
-        Mail::to($user->email)->send(new \App\Mail\VerifyEmail($user));
+        Mail::to($user->email)->send(new VerifyEmail($user));
         return response()->json(['msg' => "Registro correcto", 'data' => $user]);
     }
 
