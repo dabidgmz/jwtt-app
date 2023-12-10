@@ -86,13 +86,13 @@ Route::post('detalle-sensores', [DetalleSensorController::class, 'create']);
 Route::put('detalle-sensores/{vitrinaId}/{sensorId}', [DetalleSensorController::class, 'update']);
 
 //Sensores 
-Route::get('sensores/humedad', [adafruitController::class, 'humedad']);
-Route::get('sensores/temperatura', [adafruitController::class, 'temperatura']);
-Route::get('sensores/gas', [adafruitController::class, 'gas']);
-Route::get('sensores/impacto', [adafruitController::class, 'impacto']);
-Route::get('sensores/luz', [adafruitController::class, 'luz']);
-Route::get('sensores/vibracion', [adafruitController::class, 'vibracion']);
-Route::get('sensores/ultrasonico', [adafruitController::class, 'ultrasonico']);
+Route::get('humedad', [adafruitController::class, 'humedad']);
+Route::get('temperatura', [adafruitController::class, 'temperatura']);
+Route::get('gas', [adafruitController::class, 'gas']);
+Route::get('impacto', [adafruitController::class, 'impacto']);
+Route::get('luz', [adafruitController::class, 'luz']);
+Route::get('vibracion', [adafruitController::class, 'vibracion']);
+Route::get('ultrasonico', [adafruitController::class, 'ultrasonico']);
 
 
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
