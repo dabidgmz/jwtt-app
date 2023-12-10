@@ -8,7 +8,7 @@ class adafruitController extends Controller
     public function humedad()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/humedad/data?limit=1');
 
     if ($response->successful()) {
@@ -38,7 +38,7 @@ class adafruitController extends Controller
 public function temperatura()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/temperatura/data?limit=1');
 
     if ($response->successful()) {
@@ -66,7 +66,7 @@ public function temperatura()
 public function gas()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/gas/data?limit=1');
 
     if ($response->successful()) {
@@ -94,7 +94,7 @@ public function gas()
 public function ultrasonico()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/ultrasonico/data?limit=1');
 
     if ($response->successful()) {
@@ -122,7 +122,7 @@ public function ultrasonico()
 public function impacto()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/impacto/data?limit=1');
 
     if ($response->successful()) {
@@ -150,7 +150,7 @@ public function impacto()
 public function luz()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/luz/data?limit=1');
 
     if ($response->successful()) {
@@ -179,7 +179,7 @@ public function luz()
 public function vibracion()
 {
     $response = Http::withHeaders([
-        'X-AIO-Key' => 'aio_EEAl93EDgkBIauf25wg5t1PqosyI'
+        'X-AIO-Key' => 'aio_QUAu36PYGEgDrnkNnEimpVbutJDz'
     ])->get('https://io.adafruit.com/api/v2/1029384756/feeds/vibracion/data?limit=1');
 
     if ($response->successful()) {
