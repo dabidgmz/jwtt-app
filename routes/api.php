@@ -10,7 +10,7 @@ use App\Http\Middleware\JwtMiddleware;
 use App\Http\Controllers\UsuarioEmpresaController;
 use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
-use App\Http\Controllers\AdafruitController;
+use App\Http\Controllers\adafruitController;
 use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
@@ -85,14 +85,13 @@ Route::post('detalle-sensores', [DetalleSensorController::class, 'create']);
 Route::put('detalle-sensores/{vitrinaId}/{sensorId}', [DetalleSensorController::class, 'update']);
 
 //Sensores 
-Route::get('sensores/humedad', [AdafruitController::class, 'humedad']);
-Route::get('sensores/temperatura', [AdafruitController::class, 'temperatura']);
-Route::get('sensores/gas', [AdafruitController::class, 'gas']);
-Route::get('sensores/impacto', [AdafruitController::class, 'impacto']);
-Route::get('sensores/luz', [AdafruitController::class, 'luz']);
-Route::get('sensores/vibracion', [AdafruitController::class, 'vibracion']);
-Route::get('sensores/ultrasonico', [AdafruitController::class, 'ultrasonico']);
-
+Route::get('/humedad', [adafruitController::class, 'humedad']);
+Route::get('/temperatura', [adafruitController::class, 'temperatura']);
+Route::get('/gas', [adafruitController::class, 'gas']);
+Route::get('/ultrasonico', [adafruitController::class, 'ultrasonico']);
+Route::get('/impacto', [adafruitController::class, 'impacto']);
+Route::get('/luz', [adafruitController::class, 'luz']);
+Route::get('/vibracion', [adafruitController::class, 'vibracion']);
 
 
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
