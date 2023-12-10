@@ -1,3 +1,5 @@
+<!-- resources/views/verify.blade.php -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,8 @@
 
     <p>Gracias por registrarte a DAVAC. Haz clic en el siguiente enlace para verificar tu cuenta:</p>
 
-    <p><a href="{{ url('/verify/' . $user->id) }}">{{ url('/verify/' . $user->id) }}</a></p>
+    {{-- Agrega un parámetro "redirect" a la URL --}}
+    <p><a href="{{ url('/verify/' . $user->id . '?redirect=bienvenida') }}">{{ url('/verify/' . $user->id . '?redirect=bienvenida') }}</a></p>
 
     <p>¡Gracias!</p>
 </body>
