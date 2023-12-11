@@ -22,6 +22,6 @@ class VerificationController extends Controller
             $user->save();
         }
 
-        return redirect('/login')->with('message', '¡Tu cuenta ha sido verificada! Puedes iniciar sesión.');
+        return view('bienvenida', ['user' => $user]);
     }
 }
