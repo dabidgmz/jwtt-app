@@ -12,6 +12,7 @@ use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
 use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\adafruitController;
+use App\Http\Controllers\DefinitiveController;
 use App\Http\Controllers\VerificationController;
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,10 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
+
+
+Route::post('/Usuario/id', [DefinitiveController::class, 'getEmpresas']);
+
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -96,3 +101,4 @@ Route::get('ultrasonico', [adafruitController::class, 'ultrasonico']);
 //views
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
 Route::get('/bienvenida/{userId}', [BienvenidaController::class, 'bienvenida']);
+
