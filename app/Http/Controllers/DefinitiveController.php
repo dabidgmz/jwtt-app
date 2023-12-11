@@ -15,7 +15,7 @@ class DefinitiveController extends Controller
         try{
             $userId = Auth::user()->id;
             
-            // Suponiendo que tienes una relación de 'empresas' asociadas con el usuario
+            
             $empresas = DB::table('user_empresa')
             ->leftJoin('empresas', 'user_empresa.empresa_id', '=', 'empresas.id')
             ->where('user_id', $userId)
