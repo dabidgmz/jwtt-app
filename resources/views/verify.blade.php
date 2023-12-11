@@ -1,18 +1,67 @@
-<!-- resources/views/verify.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+    </style>
     <title>Verificación de Cuenta</title>
 </head>
 <body>
-    <p>Hola {{ $user->name }},</p>
+    <div class="container">
+        <h1>Hola {{ $user->name }},</h1>
 
-    <p>Gracias por registrarte a DAVAC. Haz clic en el siguiente enlace para verificar tu cuenta:</p>
+        <p>¡Gracias por registrarte en DAVAC!</p>
 
-    {{-- Agrega un parámetro "redirect" a la URL --}}
-    <p><a href="{{ url('/verify/' . $user->id . '?redirect=bienvenida') }}">{{ url('/verify/' . $user->id . '?redirect=bienvenida') }}</a></p>
+        <p>Por favor, haz clic en el siguiente enlace para verificar tu cuenta:</p>
 
-    <p>¡Gracias!</p>
+        <p><a href="{{ url('/verify/' . $user->id . '?redirect=bienvenida') }}">Verificar mi cuenta</a></p>
+
+        <p>¡Gracias!</p>
+    </div>
+
+    <div class="footer">
+        Este mensaje ha sido enviado automáticamente. Por favor, no respondas a este correo.
+    </div>
 </body>
 </html>
+>
