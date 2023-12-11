@@ -99,7 +99,6 @@ Route::get('vibracion', [adafruitController::class, 'vibracion']);
 Route::get('ultrasonico', [adafruitController::class, 'ultrasonico']);
 Route::get('feeds', [adafruitController::class, 'feeds']);
 
-//views
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
-Route::get('/bienvenida/{userId}', [BienvenidaController::class, 'bienvenida']);
+Route::get('/bienvenida/{userId}', 'BienvenidaController@bienvenida');
 

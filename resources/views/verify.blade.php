@@ -50,7 +50,7 @@
     <div class="container">
         <h1>Hola {{ $user->name }},</h1>
         <p>¡Gracias por registrarte en DAVAC!</p>
-        <p>¡Gracias!</p>
+        <a href="{{ url('/bienvenida/' . $user->id) }}">Ir a la página de bienvenida</a>
     </div>
 
     <div class="footer">
