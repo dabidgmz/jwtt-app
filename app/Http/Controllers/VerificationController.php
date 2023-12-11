@@ -20,8 +20,8 @@ class VerificationController extends Controller
         if ($user->email_verified_at === null) {
             $user->email_verified_at = Carbon::now();
             $user->save();
+            return redirect()->route('bienvenida', ['userId' => $user->id]);
         }
-
-        return view('bienvenida', ['user' => $user]);
+        return redirect()->route('otra_ruta');
     }
 }

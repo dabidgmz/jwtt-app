@@ -52,10 +52,6 @@
 
         <p>¡Gracias por registrarte en DAVAC!</p>
 
-        <p>Por favor, haz clic en el siguiente enlace para verificar tu cuenta:</p>
-
-        <p><a href="{{ url('/verify/' . $user->id . '?redirect=bienvenida') }}">Verificar mi cuenta</a></p>
-
         <p>¡Gracias!</p>
     </div>
 

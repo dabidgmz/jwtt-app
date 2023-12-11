@@ -10,7 +10,7 @@ use App\Http\Middleware\JwtMiddleware;
 use App\Http\Controllers\UsuarioEmpresaController;
 use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
-
+use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\adafruitController;
 use App\Http\Controllers\VerificationController;
 /*
@@ -43,7 +43,6 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
-
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -94,5 +93,6 @@ Route::get('luz', [adafruitController::class, 'luz']);
 Route::get('vibracion', [adafruitController::class, 'vibracion']);
 Route::get('ultrasonico', [adafruitController::class, 'ultrasonico']);
 
-
+//views
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
+Route::get('/bienvenida/{userId}', [BienvenidaController::class, 'bienvenida']);

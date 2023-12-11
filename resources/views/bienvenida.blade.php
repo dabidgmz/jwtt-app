@@ -1,5 +1,3 @@
-<!-- resources/views/bienvenida.blade.php -->
-
 <!DOCTYPE html>
 <html>
 <head>
