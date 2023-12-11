@@ -92,6 +92,7 @@ Route::get('impacto', [adafruitController::class, 'impacto']);
 Route::get('luz', [adafruitController::class, 'luz']);
 Route::get('vibracion', [adafruitController::class, 'vibracion']);
 Route::get('ultrasonico', [adafruitController::class, 'ultrasonico']);
+Route::get('feeds', [adafruitController::class, 'feeds']);
 
 //views
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
