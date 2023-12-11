@@ -2,9 +2,46 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
 
 class adafruitController extends Controller
 {
+
+private $AIOkey;
+private $AIOuser;
+public function __construct()
+{
+    $this->AIOkey = env('AIOKEY');
+    $this->AIOuser = env('AIOUSER');
+}
+
+public function feeds()
+{
+    
+    $tipo_sensor = DB::table('sensores')->pluck('tipo_sensor');
+    $datalist=[];
+    foreach ($tipo_sensor as $key){
+
+        $client = new Client();
+        $response = $client->get('https://io.adafruit.com/api/v2/1029384756/feeds/'.$key.'/data/last',[
+            'headers' => [
+                'X-AIO-Key' => $this->AIOkey,
+            ],
+        ]);
+        $data = json_decode($response->getBody(), true);
+        $datalist[] = [
+            'feed_key' => $key,
+            'value' => $data['value'],
+        ];
+
+    }
+    return response()->json([
+        'message' => 'Datos obtenidos correctamente',
+        'data' => $datalist
+    ], 200);
+}
+
     public function humedad()
 {
     $response = Http::withHeaders([
@@ -147,6 +184,7 @@ public function impacto()
         );
     }   
 }
+
 public function luz()
 {
     $response = Http::withHeaders([
@@ -204,6 +242,4 @@ public function vibracion()
         );
     }   
 }
-
-
     }
