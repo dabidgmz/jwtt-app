@@ -20,7 +20,7 @@
         }
 
         h1 {
-            color: #007bff;
+            color: #FFD359;
         }
 
         p {
@@ -28,7 +28,7 @@
         }
 
         a {
-            color: #007bff;
+            color: #FFD359;
             text-decoration: none;
             font-weight: bold;
         }
@@ -51,6 +51,9 @@
         <h1>Hola {{ $user->name }},</h1>
 
         <p>¡Gracias por registrarte en DAVAC!</p>
+
+        <p>Para completar la verificación, haz clic en el siguiente enlace:</p>
+        <p><a href="{{ url('/bienvenida/' . $user->id) }}" style="background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px; text-decoration: none;">Verificar</a></p>
 
         <p>¡Gracias!</p>
     </div>
