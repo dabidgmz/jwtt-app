@@ -10,10 +10,11 @@ class adafruitController extends Controller
 
 private $AIOkey;
 private $AIOuser;
+
 public function __construct()
 {
-    $this->AIOkey = env('AIOKEY');
-    $this->AIOuser = env('AIOUSER');
+    $this->AIOkey = envvv('AIOKEY');
+    $this->AIOuser = envvv('AIOUSER');
 }
 
 public function feeds()
