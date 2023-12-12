@@ -50,7 +50,7 @@
     <div class="container">
         <h1>Hola {{ $user->name }},</h1>
         <p>¡Gracias por registrarte en DAVAC!</p>
-        <a href="{{ route('bienvenida.index', ['id' => $user->id]) }}">Ir a la página de bienvenida</a>
+        <a href="{{ route('bienvenida.index', ['userId' => $user->id]) }}">Ir a la página de bienvenida</a>
     </div>
     <div class="footer">
         Este mensaje ha sido enviado automáticamente. Por favor, no respondas a este correo.
