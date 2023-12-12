@@ -5,5 +5,4 @@
 /storage/*.key
 /.fleet
 /.idea
-/.env
 /.vscode
