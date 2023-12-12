@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +29,7 @@
         }
 
         h1 {
-            color: #007bff;
+            color: #FFD359;
         }
 
         p {
@@ -39,35 +40,36 @@
             display: inline-block;
             margin-top: 10px;
             padding: 10px 20px;
-            background-color: #007bff;
-            color: #fff;
+            background-color: #FFD359;
+            color: #333;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
 
         a:hover {
-            background-color: #0056b3;
+            background-color: #D4AC0D;
         }
 
-        .footer {
+        .verification-message {
             margin-top: 20px;
-            color: #888;
-            font-size: 12px;
+            color: #4CAF50;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>Hola {{ $user->name }},</h1>
+        <h1>¡Hola {{ $user->name }}, bienvenido a DAVAC!</h1>
 
-        <p>¡Gracias por registrarte en DAVAC!</p>
+        <p>Gracias por descargar nuestra aplicación. Disfruta de nuestro contenido diseñado para la seguridad de tus vitrinas.</p>
 
-        <p>¡Gracias!</p>
-    </div>
+        <a href="#" style="background-color: #333; color: #fff;">Accede a tu cuenta</a>
 
-    <div class="footer">
-        Este mensaje ha sido enviado automáticamente. Por favor, no respondas a este correo.
+        <div class="verification-message">
+            ¡Tu cuenta ha sido verificada con éxito!
+        </div>
     </div>
 </body>
+
 </html>
