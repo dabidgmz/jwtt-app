@@ -63,9 +63,6 @@
         <h1>¡Hola {{ $user->name }}, bienvenido a DAVAC!</h1>
 
         <p>Gracias por descargar nuestra aplicación. Disfruta de nuestro contenido diseñado para la seguridad de tus vitrinas.</p>
-
-        <a href="#" style="background-color: #333; color: #fff;">Accede a tu cuenta</a>
-
         <div class="verification-message">
             ¡Tu cuenta ha sido verificada con éxito!
         </div>
