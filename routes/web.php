@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\BienvenidaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/bienvenida/{userId}', 'BienvenidaController@bienvenida')->name('bienvenida.index');
+use App\Http\Controllers\BienvenidaController;
+Route::get('/bienvenida/{userId}', [BienvenidaController::class, 'bienvenida'])
+    ->name('bienvenida.index');
