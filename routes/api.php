@@ -7,13 +7,14 @@ use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\SensorController;
 use App\Http\Controllers\VitrinaController;
 use App\Http\Middleware\JwtMiddleware;
-use App\Http\Controllers\UsuarioEmpresaController;
+use App\Http\Controllers\EmpresaUserRelacionController;
 use App\Http\Controllers\EmpresaVitrinaController;
 use App\Http\Controllers\DetalleSensorController;
 use App\Http\Controllers\BienvenidaController;
 use App\Http\Controllers\adafruitController;
 use App\Http\Controllers\DefinitiveController;
 use App\Http\Controllers\VerificationController;
+use App\Http\Controllers\UsuarioEmpresaController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -80,8 +81,8 @@ Route::delete('/vitrinas/{id}', [VitrinaController::class, 'destroy']);
 //rutas relacionales
 
 //empresa usuario
-Route::post('asociar-empresa-usuario', [UsuarioEmpresaController::class, 'asociarEmpresaUsuario']);
-Route::get('obtener-empresas-por-usuario/{userId}', [UsuarioEmpresaController::class, 'obtenerEmpresasPorUsuario']);
+Route::post('/asociar-empresa-usuario', [UsuarioEmpresaController::class, 'asociarEmpresaUsuario']);
+Route::get('/obtener-empresas-por-usuario/{userId}', [UsuarioEmpresaController::class, 'obtenerEmpresasPorUsuario']);
 //empresa vitrina
 Route::post('asociar-empresa-vitrina', [EmpresaVitrinaController::class, 'asociarEmpresaVitrina']);
 Route::get('obtener-vitrinas-por-empresa/{empresaId}', [EmpresaVitrinaController::class, 'obtenerVitrinasPorEmpresa']);
@@ -100,5 +101,4 @@ Route::get('ultrasonico', [adafruitController::class, 'ultrasonico']);
 Route::get('feeds', [adafruitController::class, 'feeds']);
 
 Route::get('/verify/{id}', [VerificationController::class, 'verify']);
-
 

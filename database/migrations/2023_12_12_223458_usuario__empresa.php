@@ -16,6 +16,7 @@ class UsuarioEmpresa extends Migration
         Schema::create('user_empresa', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('empresa_id');
+            $table->primary(['user_id', 'empresa_id']);
             $table->foreign('user_id')->references('id')->on('user');
             $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->timestamps();

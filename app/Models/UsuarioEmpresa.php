@@ -11,10 +11,7 @@ class UsuarioEmpresa extends Model
 
     protected $table = 'user_empresa';
 
-    protected $fillable = [
-        'user_id',
-        'empresa_id',
-    ];
+    protected $fillable = ['user_id', 'empresa_id'];
 
     public function user()
     {
@@ -22,7 +19,7 @@ class UsuarioEmpresa extends Model
     }
 
     public function empresa()
-    {
-        return $this->belongsTo(Empresa::class, 'empresa_id', 'id');
-    }
+{
+    return $this->belongsTo(Empresa::class, 'empresa_id');
+}
 }
