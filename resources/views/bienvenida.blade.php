@@ -64,8 +64,6 @@
         <p>¡Gracias por registrarte en DAVAC!</p>
 
         <p>¡Gracias!</p>
-
-        <a href="{{ url('/') }}">Ir a la página principal</a>
     </div>
 
     <div class="footer">
