@@ -75,7 +75,7 @@ Route::get('/vitrinas/{id}', [VitrinaController::class, 'show']);
 Route::post('/vitrinas', [VitrinaController::class, 'create']);
 Route::put('/vitrinas/{id}', [VitrinaController::class, 'update']);
 Route::delete('/vitrinas/{id}', [VitrinaController::class, 'destroy']);
-
+//esto esta privado
 
 //rutas relacionales
 
