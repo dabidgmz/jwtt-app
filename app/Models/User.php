@@ -48,5 +48,4 @@ class User extends Authenticatable implements JWTSubject
     {
         return $this->hasManyThrough(Empresa::class, UsuarioEmpresa::class, 'user_id', 'id', 'id', 'empresa_id');
     }
-
 }

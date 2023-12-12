@@ -9,6 +9,7 @@ class Empresa extends Model
 {
     use HasFactory;
 
+    protected $table = 'empresas';
     public $timestamps = true;
     protected $fillable = [
         'nombre',
@@ -16,7 +17,6 @@ class Empresa extends Model
 
     public function usuarios()
     {
-        return $this->hasManyThrough(User::class, UsuarioEmpresa::class, 'empresa_id', 'id', 'id', 'user_id');
+        return $this->hasManyThrough(User::class, UsuarioEmpresa::class, 'empresa_id', 'user_id', 'id', 'id');
     }
-
 }

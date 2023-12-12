@@ -30,6 +30,6 @@ class UsuarioEmpresa extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usuario_empresa');
+        Schema::dropIfExists('user_empresa');
     }
 }
