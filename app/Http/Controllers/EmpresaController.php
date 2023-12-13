@@ -39,8 +39,11 @@ class EmpresaController extends Controller
             'user_id'=>$userId,
             'empresa_id'=>$empresa->id
         ]);
-        return response()->json(['message' => 'Empresa creada exitosamente', 'data'=>[$empresa,$userEmpresa]], 201);
+        return response()->json(['message' => 'Empresa creada exitosamente', 'data'=>$empresa], 201);
 
+        }
+        else{
+            return response()->json(['message' => 'Usuario no encontrado']);
         }
 
 
