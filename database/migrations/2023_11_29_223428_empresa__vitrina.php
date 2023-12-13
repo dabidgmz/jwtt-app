@@ -14,9 +14,9 @@ class EmpresaVitrina extends Migration
     public function up()
     {
         Schema::create('empresa_vitrina', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('empresa_id');
             $table->unsignedBigInteger('vitrina_id');
-            $table->primary(['empresa_id', 'vitrina_id']);
             $table->foreign('empresa_id')->references('id')->on('empresas');
             $table->foreign('vitrina_id')->references('id')->on('vitrinas');
             $table->timestamps();
