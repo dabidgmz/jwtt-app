@@ -81,7 +81,7 @@ Route::delete('/vitrinas/{id}', [VitrinaController::class, 'destroy']);
 //rutas relacionales
 
 //empresa usuario
-Route::post('/relacionar-usuario-empresa', [UsuarioEmpresaController::class, 'relacionarUsuarioEmpresa']);
+Route::post('/asociar-empresa-usuario/{user_id}/{empresa_id}', [UsuarioEmpresaController::class, 'asociarEmpresaUsuario']);
 //empresa vitrina
 Route::post('asociar-empresa-vitrina', [EmpresaVitrinaController::class, 'asociarEmpresaVitrina']);
 Route::get('obtener-vitrinas-por-empresa/{empresaId}', [EmpresaVitrinaController::class, 'obtenerVitrinasPorEmpresa']);
