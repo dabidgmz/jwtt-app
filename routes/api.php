@@ -45,9 +45,9 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('logout', [AuthController::class, 'logout']);
 Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
+Route::post('/empresas', [EmpresaController::class, 'create']);
 
-
-Route::post('/Usuario/id', [DefinitiveController::class, 'getEmpresas']);
+Route::post('/Usuario/{id}', [DefinitiveController::class, 'getEmpresas']);
 
 });
 
@@ -58,7 +58,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Rutas para CRUD de Empresas
 Route::get('/empresas', [EmpresaController::class, 'index']);
 Route::get('/empresas/{id}', [EmpresaController::class, 'show']);
-Route::post('/empresas', [EmpresaController::class, 'create']);
+
 Route::put('/empresas/{id}', [EmpresaController::class, 'update']);
 Route::delete('/empresas/{id}', [EmpresaController::class, 'destroy']);
 

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empresa;
+use Illuminate\Support\Facades\Auth;
+use App\Models\UsuarioEmpresa;
 
 class EmpresaController extends Controller
 {
@@ -22,15 +24,26 @@ class EmpresaController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
-            'nombre' => 'required|string|max:100',
-        ]);
+        $userId = Auth()->user()->id;
+        if ($userId){
 
+            $request->validate([
+                'nombre' => 'required|string|max:100',
+            ]);
+            
         $empresa = Empresa::create([
             'nombre' => $request->input('nombre'),
         ]);
 
-        return response()->json(['message' => 'Empresa creada exitosamente'], 201);
+        $userEmpresa =UsuarioEmpresa::create([
+            'user_id'=>$userId,
+            'empresa_id'=>$empresa->id
+        ]);
+        return response()->json(['message' => 'Empresa creada exitosamente', 'data'=>[$empresa,$userEmpresa]], 201);
+
+        }
+
+
     }
 
     public function update(Request $request, $id)

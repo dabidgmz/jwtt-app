@@ -19,7 +19,7 @@ class DefinitiveController extends Controller
             $empresas = DB::table('user_empresa')
             ->leftJoin('empresas', 'user_empresa.empresa_id', '=', 'empresas.id')
             ->where('user_id', $userId)
-            ->get();;
+            ->get();
 
             return response()->json([
                 'userId' => $userId,
