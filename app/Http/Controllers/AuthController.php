@@ -70,7 +70,7 @@ class AuthController extends Controller
         'departament' => $request->input('departament'),
         'phone' => $request->input('phone'),
         'matricula' => $request->input('matricula'),
-        'status' => true,
+        'status' => null, 
         'password' => bcrypt($request->input('password')),
     ]);
 
@@ -134,7 +134,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => JWTAuth::factory()->getTTL() * 60
+            'expires_in' => JWTAuth::factory()->getTTL() * 60* 24 * 365 * 2
         ]);
     }
 
