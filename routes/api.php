@@ -47,7 +47,7 @@ Route::post('refresh', [AuthController::class, 'refresh']);
 Route::post('me', [AuthController::class, 'me']);
 Route::post('/empresas', [EmpresaController::class, 'create']);
 
-Route::post('/Usuario/{id}', [DefinitiveController::class, 'getEmpresas']);
+Route::post('/Usuario/id', [DefinitiveController::class, 'getEmpresas']);//esta es la ruta que regresa todas las empresas
 
 });
 
